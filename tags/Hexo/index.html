@@ -151,45 +151,16 @@
         <span class="column is-narrow">
             
             
-            4 minutes read (About 581 words)
+            4 minutes read (About 582 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p>I’ve decided to start a blog and document my activities there. I recalled using Hexo in the past, which is a fast, simple, and efficient blog framework that supports one-click deployment to GitHub Pages. By combining GitHub Pages with a custom domain, I’ll have a complete blog website.</p>
-<p>Below, I’ll share the process of installing and configuring Hexo on my Mac Mini M1, creating a new repo on GitHub, deploying the Hexo-generated website to the repo, and finally publishing it to GitHub Pages.</p>
-<h2 id="1-Installing-Node-js"><a href="#1-Installing-Node-js" class="headerlink" title="1. Installing Node.js"></a>1. Installing Node.js</h2><p>Before installing Hexo, make sure Node.js is installed. If you already have Node.js installed, you can skip to step 2.</p>
-<p>On macOS, you can use Homebrew to install Node.js:</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></tbody></table></figure>
-<p>You may also need to install npm separately because I noticed that Homebrew’s Node.js doesn’t come with npm by default:</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install npm</span><br></pre></td></tr></tbody></table></figure>
-
-<p>Verify the Node.js version by typing <code>node --version</code> in the terminal. At the time of writing this blog post, the latest version installed by Homebrew is <code>v20.5.0</code>.</p>
-<h2 id="2-Installing-Hexo"><a href="#2-Installing-Hexo" class="headerlink" title="2. Installing Hexo"></a>2. Installing Hexo</h2><p>Once Node.js is installed, you can use npm to install the Hexo package:</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="3-Getting-Started-with-the-Blog"><a href="#3-Getting-Started-with-the-Blog" class="headerlink" title="3. Getting Started with the Blog"></a>3. Getting Started with the Blog</h2><p>After installing Hexo, execute the following commands to create the necessary files in the specified folder:</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="hljs-built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
-
-<p>You can name the folder as the same name of the repository you plan to deploy to GitHub Pages, for example, <code>example.github.io</code>.</p>
-<h2 id="4-Configuring-the-Site"><a href="#4-Configuring-the-Site" class="headerlink" title="4. Configuring the Site"></a>4. Configuring the Site</h2><p>After generating the website, the first step is to configure Hexo’s <code>_config.yml</code> file.</p>
-<p>Open the <code>_config.yml</code> file and set the site’s name, URL, language, etc. Since I want my blog to have both English and Chinese content, I can set the language as <code>language: ['en', 'zh-cn']</code>, where <code>en</code> is the default. Also, find the <code>i18n_dir</code> setting for international language settings and set it to <code>i18n_dir: :lang</code>, which means using the language code directory to identify the language. So, for Chinese posts, remember to place the source files in the <code>zh-cn</code> directory.</p>
-<p>Next, install and specify the theme for the website. As I could only find one theme that supports multiple languages, I’m using the <strong>minos</strong> theme: <code>theme: minos</code>.</p>
-<h2 id="5-One-Click-Deployment"><a href="#5-One-Click-Deployment" class="headerlink" title="5. One-Click Deployment"></a>5. One-Click Deployment</h2><p>Hexo provides a quick and convenient one-click deployment feature, allowing you to deploy the website to the server with just one command:</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
-
-<p>Before starting the deployment, make sure to modify the parameters in <code>_config.yml</code>. At a minimum, the deployment configuration should have the type parameter, for example:</p>
-<figure class="highlight yml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">deploy:</span></span><br><span class="line">  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>Since we are using GitHub for deployment, we need to use the Git deployer. First, install it:</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></tbody></table></figure>
-
-<p>Then, modify the <code>_config.yml</code> configuration:</p>
-<figure class="highlight yml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">deploy:</span></span><br><span class="line">  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span></span><br><span class="line">  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/example/example.github.io</span></span><br><span class="line">  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="6-Custom-Domain"><a href="#6-Custom-Domain" class="headerlink" title="6. Custom Domain"></a>6. Custom Domain</h2><p>After deployment, you can set a custom domain in GitHub Pages settings. Once set, a file named <code>CNAME</code> will be created in the root directory of the <code>gh-pages</code> branch in your repository, containing the custom domain you specified. However, this file will disappear every time you deploy with Hexo since it doesn’t exist locally. To avoid having to reset the custom domain with each deployment, you can place a <code>CNAME</code> file in the<code>source</code> folder locally, so it will be uploaded along with the deployment each time.</p>
-</body></html>
+        <html><head></head><body><p>I’ve decided to start a blog and document my activities there. I recalled using Hexo in the past, which is a fast, simple, and efficient blog framework that supports one-click deployment to GitHub Pages. By combining GitHub Pages with a custom domain, I’ll have a complete blog website.</p></body></html>
+        <p class="article-more-link">
+            <a href="/2023/07/29/how-to-setup-hexo/#more">Read More</a>
+        </p>
     
     </div>
     
@@ -243,15 +214,12 @@
         </div>
         <div class="dropdown-menu has-text-left" role="menu">
             <div class="dropdown-content">
-            
-                <a href="/tags/Hexo/index.html" class="dropdown-item">
+                <a href="https://blog.88886801.xyz/" class="dropdown-item">
                     English
                 </a>
-            
-                <a href="/zh-cn/tags/Hexo/index.html" class="dropdown-item">
+                <a href="https://blog.88886801.xyz/zh-cn/" class="dropdown-item">
                     简体中文
                 </a>
-            
             </div>
         </div>
     </div>
