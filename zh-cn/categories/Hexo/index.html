@@ -132,13 +132,13 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2023/07/28/zh-cn/Category-Test/" itemprop="url">分类测试</a>
+            <a href="/2023/07/29/zh-cn/how-to-setup-hexo/" itemprop="url">在 macOS ARM 上设置 Hexo 博客框架并将生成的博客发布到 GitHub Pages</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-28T09:51:29.000Z" itemprop="datePublished">7月 28 2023</time>
+                <time datetime="2023-07-29T00:27:50.000Z" itemprop="datePublished">7月 29 2023</time>
             
         </span>
         
@@ -151,52 +151,39 @@
         <span class="column is-narrow">
             
             
-            几秒 读完 (约 11 字)
+            6 分钟 读完 (约 868 字)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><h2 id="这是测试-Hexo-的分类和标签"><a href="#这是测试-Hexo-的分类和标签" class="headerlink" title="这是测试 Hexo 的分类和标签"></a>这是测试 Hexo 的分类和标签</h2></body></html>
-    
-    </div>
-    
-    
-</article>
+        <html><head></head><body><p>近日开始萌生写博客，把平时自己的活动记录下来。想到了以前用过的 Hexo，一个快速、简洁且高效的博客框架，并且支持一键部署到 GitHub Pages。使用 GitHub Pages 配合自定义域名，等于是有了一个完整的博客网站。</p>
+<p>以下记录了我在 Mac Mini M1 设备上安装、配置 Hexo，在 Github 上新建 repo，把 Hexo 生成的网站部署到 repo，并发布到 GitHub Pages 上的过程。</p>
+<h2 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1. 安装 Node.js"></a>1. 安装 Node.js</h2><p>安装 Hexo 之前先确保安装了 Node.js。如果之前已安装 Node.js，可以跳到第二步。</p>
+<p>在 macOS 上可以使用 Homebrew 安装 Node.js：</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></tbody></table></figure>
+<p>同时可能需要安装 npm，因为我发现 Homebrew 安装的 Node.js 并不自带 npm：</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install npm</span><br></pre></td></tr></tbody></table></figure>
+<p>确认一下 Node.js 的版本，在终端输入 <code>node --version</code>，在我写这篇博客时，Homebrew 安装的最新版本是 <code>v20.5.0</code>。</p>
+<h2 id="2-安装-Hexo"><a href="#2-安装-Hexo" class="headerlink" title="2. 安装 Hexo"></a>2. 安装 Hexo</h2><p>确认 Node.js 已经安装之后就可以使用 npm 安装 hexo 包了。</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></tbody></table></figure>
 
+<h2 id="3-开始建站"><a href="#3-开始建站" class="headerlink" title="3. 开始建站"></a>3. 开始建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
+<p>这里的 folder 你可以命名为你部署到 GitHub Pages 的仓库名，比如 <code>example.github.io</code></p>
+<h2 id="4-配置站点"><a href="#4-配置站点" class="headerlink" title="4. 配置站点"></a>4. 配置站点</h2><p>生成网站之后，首先配置 Hexo 的 <code>_config.yml</code> 文件。</p>
+<p>打开 <code>_config.yml</code> 文件后需要设置的有站点的名称、url、语言等。对于语言设置，因为我想我的博客同时有英文和中文内容，所以可以设置为 <code>language: ['en', 'zh-cn']</code>，前面的 <code>en</code> 是默认的。 同时，找到 <code>i18n_dir</code>  国际语言设置设置，将其设置为 <code>i18n_dir: :lang</code>, 意为通过语言编码目录来识别语言。所以，如果是中文的 post 的话，记得把 post 的源文件放到 <code>zh-cn</code> 目录。</p>
+<p>接下来需要安装及指定网站所用的主题。因为支持多语言的主题我只找到 minos 一个。所以我用的主题是 minos。<code>theme: minos</code></p>
+<h2 id="5-一键部署"><a href="#5-一键部署" class="headerlink" title="5. 一键部署"></a>5. 一键部署</h2><p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
+<p>在开始之前，您必须先在 <code>_config.yml</code> 中修改参数，一个正确的部署配置中至少要有 type 参数，例如：</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br></pre></td></tr></tbody></table></figure>
+<p>以为要用到 GitHub 部署，所以我们要用到 Git 部署器（deployer）。先安装：</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></tbody></table></figure>
+<p>然后修改 <code>_config.yml</code> 配置：</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/example/example.github.io</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></tbody></table></figure>
 
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2023/07/28/zh-cn/test/" itemprop="url">test</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2023-07-28T09:40:48.000Z" itemprop="datePublished">7月 28 2023</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/zh-cn/categories/Hexo/">Hexo</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            几秒 读完 (约 13 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><p>这是一个测试。</p>
+<h2 id="6-自定义域名"><a href="#6-自定义域名" class="headerlink" title="6. 自定义域名"></a>6. 自定义域名</h2><p>部署完成后，可以在 Github Pages 设置自定义域名。设置，完成后，在仓库的 <code>gh-pages</code> 分支的根目录会生成一个名为 <code>CNAME</code> 的文件，里面就是之前设置的自定义域名。但是这个文件在每次在 Hexo 部署时就会消失，原因是 Hexo 本地并没有这个文件。为避免每次部署都要重新设置自定义域名，可以在本地的 <code>source</code> 文件夹放置一个 CNAME 文件，这样每次部署时 <code>CNAME</code> 都会一同被上传。</p>
 </body></html>
     
     </div>

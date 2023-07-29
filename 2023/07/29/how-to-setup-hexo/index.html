@@ -2,13 +2,13 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>test - siikii&#39;s Blog</title>
+<title>Setting Up Hexo and Deploying to GitHub Pages on Mac Mini M1 - siikii&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<link href="/2023/07/28/zh-cn/test/" rel="alternate" hreflang="en" />
+<link href="/zh-cn/2023/07/29/how-to-setup-hexo/" rel="alternate" hreflang="zh-CN" />
     
 
 
@@ -18,17 +18,18 @@
 
 
 
-    <meta name="description" content="这是一个测试这是一个测试。">
+    <meta name="description" content="I’ve decided to start a blog and document my activities there. I recalled using Hexo in the past, which is a fast, simple, and efficient blog framework that supports one-click deployment to GitHub Pag">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://blog.88886801.xyz/2023/07/28/zh-cn/test/index.html">
+<meta property="og:title" content="Setting Up Hexo and Deploying to GitHub Pages on Mac Mini M1">
+<meta property="og:url" content="http://blog.88886801.xyz/2023/07/29/how-to-setup-hexo/index.html">
 <meta property="og:site_name" content="siikii&#39;s Blog">
-<meta property="og:description" content="这是一个测试这是一个测试。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-28T09:40:48.000Z">
-<meta property="article:modified_time" content="2023-07-28T11:37:25.320Z">
+<meta property="og:description" content="I’ve decided to start a blog and document my activities there. I recalled using Hexo in the past, which is a fast, simple, and efficient blog framework that supports one-click deployment to GitHub Pag">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-29T00:27:50.000Z">
+<meta property="article:modified_time" content="2023-07-29T02:08:56.730Z">
 <meta property="article:author" content="siikii">
 <meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github Pages">
 <meta name="twitter:card" content="summary">
 
 
@@ -75,7 +76,7 @@
 <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/zh-cn">
+            <a class="navbar-item navbar-logo" href="/">
                 
                     
                     siikii&#39;s Blog
@@ -92,22 +93,22 @@
         <div class="navbar-menu navbar-start">
             
             <a class="navbar-item "
-               href="/zh-cn/">首页</a>
+               href="/">Home</a>
             
             <a class="navbar-item "
-               href="/zh-cn/archives">归档</a>
+               href="/archives">Archives</a>
             
             <a class="navbar-item "
-               href="/zh-cn/categories">分类</a>
+               href="/categories">Categories</a>
             
             <a class="navbar-item "
-               href="/zh-cn/about">关于</a>
+               href="/about">About</a>
             
         </div>
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
@@ -129,53 +130,75 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            test
+            Setting Up Hexo and Deploying to GitHub Pages on Mac Mini M1
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-28T09:40:48.000Z" itemprop="datePublished">7月 28 2023</time>
+                <time datetime="2023-07-29T00:27:50.000Z" itemprop="datePublished">Jul 29 2023</time>
             
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/zh-cn/categories/Hexo/">Hexo</a>
+            <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
         </span>
         
         
         <span class="column is-narrow">
             
             
-            几秒 读完 (约 13 字)
+            4 minutes read (About 581 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><p>这是一个测试。</p>
+        <html><head></head><body><p>I’ve decided to start a blog and document my activities there. I recalled using Hexo in the past, which is a fast, simple, and efficient blog framework that supports one-click deployment to GitHub Pages. By combining GitHub Pages with a custom domain, I’ll have a complete blog website.</p>
+<p>Below, I’ll share the process of installing and configuring Hexo on my Mac Mini M1, creating a new repo on GitHub, deploying the Hexo-generated website to the repo, and finally publishing it to GitHub Pages.</p>
+<h2 id="1-Installing-Node-js"><a href="#1-Installing-Node-js" class="headerlink" title="1. Installing Node.js"></a>1. Installing Node.js</h2><p>Before installing Hexo, make sure Node.js is installed. If you already have Node.js installed, you can skip to step 2.</p>
+<p>On macOS, you can use Homebrew to install Node.js:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></tbody></table></figure>
+<p>You may also need to install npm separately because I noticed that Homebrew’s Node.js doesn’t come with npm by default:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install npm</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Verify the Node.js version by typing <code>node --version</code> in the terminal. At the time of writing this blog post, the latest version installed by Homebrew is <code>v20.5.0</code>.</p>
+<h2 id="2-Installing-Hexo"><a href="#2-Installing-Hexo" class="headerlink" title="2. Installing Hexo"></a>2. Installing Hexo</h2><p>Once Node.js is installed, you can use npm to install the Hexo package:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-Getting-Started-with-the-Blog"><a href="#3-Getting-Started-with-the-Blog" class="headerlink" title="3. Getting Started with the Blog"></a>3. Getting Started with the Blog</h2><p>After installing Hexo, execute the following commands to create the necessary files in the specified folder:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="hljs-built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
+
+<p>You can name the folder as the same name of the repository you plan to deploy to GitHub Pages, for example, <code>example.github.io</code>.</p>
+<h2 id="4-Configuring-the-Site"><a href="#4-Configuring-the-Site" class="headerlink" title="4. Configuring the Site"></a>4. Configuring the Site</h2><p>After generating the website, the first step is to configure Hexo’s <code>_config.yml</code> file.</p>
+<p>Open the <code>_config.yml</code> file and set the site’s name, URL, language, etc. Since I want my blog to have both English and Chinese content, I can set the language as <code>language: ['en', 'zh-cn']</code>, where <code>en</code> is the default. Also, find the <code>i18n_dir</code> setting for international language settings and set it to <code>i18n_dir: :lang</code>, which means using the language code directory to identify the language. So, for Chinese posts, remember to place the source files in the <code>zh-cn</code> directory.</p>
+<p>Next, install and specify the theme for the website. As I could only find one theme that supports multiple languages, I’m using the <strong>minos</strong> theme: <code>theme: minos</code>.</p>
+<h2 id="5-One-Click-Deployment"><a href="#5-One-Click-Deployment" class="headerlink" title="5. One-Click Deployment"></a>5. One-Click Deployment</h2><p>Hexo provides a quick and convenient one-click deployment feature, allowing you to deploy the website to the server with just one command:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Before starting the deployment, make sure to modify the parameters in <code>_config.yml</code>. At a minimum, the deployment configuration should have the type parameter, for example:</p>
+<figure class="highlight yml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">deploy:</span></span><br><span class="line">  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Since we are using GitHub for deployment, we need to use the Git deployer. First, install it:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Then, modify the <code>_config.yml</code> configuration:</p>
+<figure class="highlight yml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">deploy:</span></span><br><span class="line">  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span></span><br><span class="line">  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/example/example.github.io</span></span><br><span class="line">  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="6-Custom-Domain"><a href="#6-Custom-Domain" class="headerlink" title="6. Custom Domain"></a>6. Custom Domain</h2><p>After deployment, you can set a custom domain in GitHub Pages settings. Once set, a file named <code>CNAME</code> will be created in the root directory of the <code>gh-pages</code> branch in your repository, containing the custom domain you specified. However, this file will disappear every time you deploy with Hexo since it doesn’t exist locally. To avoid having to reset the custom domain with each deployment, you can place a <code>CNAME</code> file in the<code>source</code> folder locally, so it will be uploaded along with the deployment each time.</p>
 </body></html>
     
     </div>
     
     <div class="columns is-variable is-1 is-multiline is-mobile">
     
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/zh-cn/tags/Hexo/">#Hexo</a></span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Hexo/">#Hexo</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Github-Pages/">#Github Pages</a></span>
     
     </div>
     
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2023/07/28/zh-cn/Category-Test/">分类测试</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-next">
-            
-        </span>
-    </div>
     
 </article>
 
@@ -216,7 +239,7 @@
                 <span class="icon">
                     <i class="fas fa-globe"></i>
                 </span>
-                <span>简体中文</span>
+                <span>English</span>
                 <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </span>
@@ -225,11 +248,11 @@
         <div class="dropdown-menu has-text-left" role="menu">
             <div class="dropdown-content">
             
-                <a href="/2023/07/28/zh-cn/test/" class="dropdown-item">
+                <a href="/2023/07/29/how-to-setup-hexo/" class="dropdown-item">
                     English
                 </a>
             
-                <a href="/zh-cn/2023/07/28/zh-cn/test/" class="dropdown-item">
+                <a href="/zh-cn/2023/07/29/how-to-setup-hexo/" class="dropdown-item">
                     简体中文
                 </a>
             
@@ -266,7 +289,7 @@
     window.FontAwesomeConfig = {
         searchPseudoElements: true
     }
-    moment.locale("zh-CN");
+    moment.locale("en-AU");
 </script>
 
 
@@ -393,7 +416,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -405,13 +428,13 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
-            CONTENT_URL: '/content.zh-cn.json',
+            CONTENT_URL: '/content.json',
         };
         window.INSIGHT_CONFIG = INSIGHT_CONFIG;
     })(window);
